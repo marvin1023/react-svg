@@ -1,0 +1,23 @@
+{
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ycxu",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marvin1023/react-svg"
+  },
+  "devDependencies": {
+    "prop-types": "^15.6.2"
+  },
+  "license": "ISC",
+  "name": "react-svg-next",
+  "description": "A svg component for React",
+  "keywords": [
+    "svg",
+    "svg inline",
+    "react svg component",
+  ]
+}
