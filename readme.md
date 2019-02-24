@@ -10,7 +10,7 @@ IconSvg 是一个通用的 React svg 组件容器，支持三种调用方式：
 
 |Prop name | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |
-|name	|string	|Required	|svg 名字，会用作 class|
+|name	|string	|Required	|svg 名字，会用作 class 等|
 |className|	string	|||	
 |inline	|bool		||是否直接内嵌 svg，使用 svg-loader 加载|
 |svgData|	object	|	|通过 loader 解析出来的 svg 数据对象|
@@ -49,13 +49,13 @@ IconSvg 是一个通用的 React svg 组件容器，支持三种调用方式：
 </IconSvg>
 
 // svg inline 方式
-import home from 'assets/svgInline/home.inline.svg';
-<IconSvg className="svg--home" inline name={home} />
+import homeData from 'assets/svgInline/home.inline.svg';
+<IconSvg name="home" inline svgData={homeData} />
+
+// svg sprite 方式
+import crossData from 'assets/svg/cross.svg';
+<IconSvg name="cross" svgData={crossData} />
 ```
-
-## DEMO
-
-[React IconSvg Demo](https://imweb.github.io/stone-ui/index.html#!/SvgDemos)
 
 ## 最后说明
 

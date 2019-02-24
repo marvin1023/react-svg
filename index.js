@@ -9,14 +9,14 @@ function IconSvg(props) {
   // 获取传入的参数
   const {
     name, url, className, children,
-    inline, extLink, ...rest
+    inline, extLink, svgData ...rest
   } = props;
-  const cssClass = classnames('icon-svg', className);
+  const cssClass = classnames('icon-svg', `svg--${name}`, className);
 
   // 如果有路径参数，则返回直接嵌入式代码
   if (children) {
     return (
-      <svg viewBox={props.viewBox || '0 0 32 32'} className={`${cssClass} svg--${name}`} {...rest} >
+      <svg viewBox={props.viewBox || '0 0 32 32'} className={cssClass} {...rest} >
         <title>{name}</title>
         {children}
       </svg>
@@ -27,7 +27,7 @@ function IconSvg(props) {
   // use 不能跨域，所以慎用
   if (url) {
     return (
-      <svg className={`${cssClass} svg--${name}`} {...rest}>
+      <svg className={cssClass} {...rest}>
         <use xlinkHref={`${url}#icon-${name}`} />
       </svg>
     );
@@ -36,11 +36,11 @@ function IconSvg(props) {
   // svg-loader
   // 直接 inline svg
   if (inline) {
-    const { attributes, content } = name;
+    const { attributes, content } = svgData;
     return (
       /* eslint-disable */
       <svg
-        className={`${cssClass}`}
+        className={cssClass}
         dangerouslySetInnerHTML={{ __html: content }}
         {...attributes}
       />
@@ -51,8 +51,8 @@ function IconSvg(props) {
   // svg-sprite-loader
   // inline svg，且把 svg 合并在一起插入到前面，使用的时候使用 use 根据 id 调用
   return (
-    <svg className={`${cssClass}`} viewBox={name.viewBox} {...rest}>
-      <use xlinkHref={extLink ? name.url : `#${name.id}`} />
+    <svg className={cssClass} viewBox={svgData.viewBox} {...rest}>
+      <use xlinkHref={extLink ? svgData.url : `#${svgData.id}`} />
     </svg>
   );
 }
